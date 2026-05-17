@@ -1,179 +1,211 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Code2, Database, GitBranch, FileSpreadsheet, Boxes, ListOrdered, Sparkles, Mail, Github, Linkedin } from "lucide-react";
+import {
+  Code2, Database, GitBranch, Globe, Wrench, Mail, Github, Linkedin,
+  Download, ArrowRight, Boxes, ListChecks, Gamepad2, Sparkles,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Maddy Marín — Ingeniería de Software" },
-      { name: "description", content: "Perfil profesional de Maddy Marín, estudiante de Ingeniería de Software apasionada por el código limpio y la lógica de programación." },
+      { title: "Maddy Marín — Ingeniería en Software" },
+      {
+        name: "description",
+        content:
+          "Portafolio de Maddy Marín, estudiante de Ingeniería en Software. Proyectos en Java, PHP, MariaDB y desarrollo de videojuegos en LÖVE/Lua.",
+      },
     ],
   }),
 });
 
-const skills = [
-  { name: "Java", icon: Code2 },
-  { name: "PHP", icon: Code2 },
-  { name: "C++", icon: Code2 },
-  { name: "MariaDB", icon: Database },
-  { name: "HTML / CSS", icon: Code2 },
-  { name: "Git / GitHub", icon: GitBranch },
-  { name: "Microsoft Excel", icon: FileSpreadsheet },
+const GITHUB = "https://github.com/madx2911";
+const LINKEDIN = "http://www.linkedin.com/in/maddy-tatiana-marin-garzon-328386409";
+const CV = "https://drive.google.com/file/d/1uIRbQFDuQ6rkRdCw_gN080dW0_kWkZu7/view";
+const EMAIL = "Maddytatiana2911@hotmail.com";
+
+const skillGroups = [
+  { icon: Code2, title: "Lenguajes", items: ["Java", "PHP", "C++"] },
+  { icon: Globe, title: "Web", items: ["HTML", "CSS"] },
+  { icon: Database, title: "Bases de Datos", items: ["MariaDB"] },
+  {
+    icon: Wrench,
+    title: "Herramientas",
+    items: ["Git / GitHub", "PSeInt", "Lógica de programación", "Verificación de algoritmos"],
+  },
 ];
 
 const projects = [
   {
-    icon: Boxes,
-    title: "Módulo de Inventario",
-    tag: "Sistema de gestión",
+    icon: ListChecks,
+    tag: "Análisis & Lógica",
+    title: "Análisis Lógico de Algoritmos",
     description:
-      "Diseño e implementación de un módulo de inventario orientado a la gestión eficiente de productos, con foco en estructura de datos consistente y operaciones CRUD optimizadas.",
-    stack: ["Java", "MariaDB", "PHP"],
+      "Estudio detallado de algoritmos mediante pruebas de escritorio, validando paso a paso la lógica y la eficiencia antes de la ejecución.",
+    stack: ["Pruebas de escritorio", "PSeInt", "Lógica"],
   },
   {
-    icon: ListOrdered,
-    title: "Algoritmos de Ordenamiento",
-    tag: "Análisis & Desarrollo",
+    icon: Boxes,
+    tag: "Aplicación Web",
+    title: "Módulo de Gestión de Inventario",
     description:
-      "Análisis y desarrollo de algoritmos de ordenamiento implementados en Java, validados mediante pruebas de escritorio detalladas para garantizar la eficiencia lógica del código.",
-    stack: ["Java", "Pruebas de escritorio", "Análisis"],
+      "Sistema web para administrar productos, stock y movimientos. Backend en PHP con persistencia y consultas optimizadas en MariaDB.",
+    stack: ["PHP", "MariaDB", "HTML/CSS"],
+  },
+  {
+    icon: Gamepad2,
+    tag: "Game Dev",
+    title: "Plataformas 2D inspirado en Ecuador",
+    description:
+      "Videojuego de plataformas 2D desarrollado en LÖVE y Lua, con escenarios, personajes y estética inspirada en la cultura ecuatoriana.",
+    stack: ["LÖVE", "Lua", "2D"],
   },
 ];
 
 function Index() {
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      {/* Ambient background */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
-        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full blur-3xl opacity-30"
-          style={{ background: "var(--gradient-hero)" }} />
-        <div className="absolute top-1/2 -right-40 h-[600px] w-[600px] rounded-full blur-3xl opacity-20"
-          style={{ background: "var(--gradient-hero)" }} />
-      </div>
-
+    <main className="min-h-screen bg-background text-foreground">
       {/* Nav */}
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-        <div className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="grid h-8 w-8 place-items-center rounded-md text-primary-foreground"
-            style={{ background: "var(--gradient-hero)" }}>
-            <Sparkles className="h-4 w-4" />
-          </span>
-          <span>Maddy.dev</span>
-        </div>
-        <div className="hidden gap-8 text-sm text-muted-foreground sm:flex">
-          <a href="#about" className="hover:text-foreground transition-colors">Sobre mí</a>
-          <a href="#skills" className="hover:text-foreground transition-colors">Habilidades</a>
-          <a href="#projects" className="hover:text-foreground transition-colors">Proyectos</a>
+      <nav className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+          <a href="#top" className="flex items-center gap-2 font-semibold tracking-tight">
+            <span
+              className="grid h-8 w-8 place-items-center rounded-lg text-primary-foreground"
+              style={{ background: "var(--gradient-hero)" }}
+            >
+              <Sparkles className="h-4 w-4" />
+            </span>
+            Maddy Marín
+          </a>
+          <div className="hidden gap-8 text-sm text-muted-foreground sm:flex">
+            <a href="#about" className="hover:text-foreground transition-colors">Sobre mí</a>
+            <a href="#skills" className="hover:text-foreground transition-colors">Habilidades</a>
+            <a href="#projects" className="hover:text-foreground transition-colors">Proyectos</a>
+            <a href="#contact" className="hover:text-foreground transition-colors">Contacto</a>
+          </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 pt-16 pb-24 sm:pt-24">
-        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-1.5 text-xs text-muted-foreground backdrop-blur">
-          <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-          Disponible para colaborar
+      <section id="top" className="mx-auto max-w-5xl px-6 pt-20 pb-24 sm:pt-28">
+        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs text-muted-foreground">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          Disponible para nuevas oportunidades
         </div>
-        <h1 className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl">
-          Maddy Marín
+        <h1 className="mt-6 text-5xl font-bold tracking-tight sm:text-7xl">
+          Hola, soy <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-hero)" }}>Maddy Marín</span>
         </h1>
-        <h2 className="mt-4 text-2xl font-light text-muted-foreground sm:text-3xl">
-          Estudiante de{" "}
-          <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-hero)" }}>
-            Ingeniería de Software
-          </span>
-        </h2>
-        <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Construyo soluciones tecnológicas con código limpio, pensamiento lógico
-          y un análisis profundo respaldado por pruebas de escritorio.
+        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+          Estudiante de Ingeniería en Software. Me apasiona la lógica de programación
+          y construir soluciones limpias, simples y bien pensadas.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="#projects"
-            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:scale-105"
-            style={{ background: "var(--gradient-hero)", boxShadow: "var(--shadow-glow)" }}>
-            Ver proyectos
+          <a
+            href={CV}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:-translate-y-0.5"
+            style={{ boxShadow: "var(--shadow-elegant)" }}
+          >
+            <Download className="h-4 w-4" /> Descargar CV
           </a>
-          <a href="#about"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-6 py-3 text-sm font-medium backdrop-blur transition-colors hover:bg-card">
-            Conóceme
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium transition-colors hover:bg-secondary"
+          >
+            Ver proyectos <ArrowRight className="h-4 w-4" />
           </a>
+        </div>
+        <div className="mt-6 flex flex-wrap gap-2">
+          <SocialPill href={GITHUB} icon={Github} label="GitHub" />
+          <SocialPill href={LINKEDIN} icon={Linkedin} label="LinkedIn" />
+          <SocialPill href={`mailto:${EMAIL}`} icon={Mail} label="Email" />
         </div>
       </section>
 
       {/* About */}
-      <section id="about" className="mx-auto max-w-6xl px-6 py-20">
-        <SectionLabel index="01" title="Sobre mí" />
-        <div className="mt-10 grid gap-8 lg:grid-cols-5">
-          <div className="lg:col-span-3">
-            <p className="text-2xl font-light leading-relaxed text-foreground sm:text-3xl">
-              Estudiante de Ingeniería de Software apasionada por el{" "}
-              <span className="text-primary">desarrollo de soluciones tecnológicas</span>{" "}
-              y la lógica de programación.
+      <Section id="about" index="01" title="Sobre mí">
+        <div className="grid gap-10 lg:grid-cols-5">
+          <p className="lg:col-span-3 text-2xl font-light leading-relaxed sm:text-3xl">
+            Soy estudiante de Ingeniería en Software apasionada por la{" "}
+            <span className="text-primary">lógica de programación</span> y las{" "}
+            <span className="text-primary">soluciones limpias</span>. Disfruto analizar
+            problemas paso a paso, validar algoritmos con pruebas de escritorio y
+            convertir ideas en código mantenible.
+          </p>
+          <div
+            className="lg:col-span-2 rounded-2xl border border-border bg-card p-6"
+            style={{ boxShadow: "var(--shadow-soft)" }}
+          >
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">Enfoque</p>
+            <p className="mt-3 text-lg font-medium leading-relaxed">
+              "Pensar antes de codificar, validar antes de ejecutar."
             </p>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Mi enfoque se centra en el <span className="text-foreground">código limpio</span>,
-              respaldado por análisis profundo mediante pruebas de escritorio que
-              garantizan la eficiencia lógica antes de la ejecución.
-            </p>
-          </div>
-          <div className="lg:col-span-2">
-            <div className="rounded-2xl border border-border p-6"
-              style={{ background: "var(--gradient-card)", boxShadow: "var(--shadow-elegant)" }}>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground">Filosofía</p>
-              <p className="mt-3 text-lg font-medium leading-relaxed">
-                "Pensar antes de codificar. Validar antes de ejecutar."
-              </p>
-              <div className="mt-6 grid grid-cols-2 gap-4 border-t border-border pt-6">
-                <div>
-                  <p className="text-3xl font-bold text-primary">7+</p>
-                  <p className="text-xs text-muted-foreground">Tecnologías</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-primary">2</p>
-                  <p className="text-xs text-muted-foreground">Proyectos clave</p>
-                </div>
-              </div>
+            <div className="mt-6 grid grid-cols-2 gap-4 border-t border-border pt-6">
+              <Stat value="3+" label="Proyectos" />
+              <Stat value="8+" label="Tecnologías" />
             </div>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Skills */}
-      <section id="skills" className="mx-auto max-w-6xl px-6 py-20">
-        <SectionLabel index="02" title="Habilidades técnicas" />
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {skills.map((s) => (
-            <div key={s.name}
-              className="group relative overflow-hidden rounded-xl border border-border p-5 transition-all hover:-translate-y-1 hover:border-primary/50"
-              style={{ background: "var(--gradient-card)" }}>
-              <s.icon className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
-              <p className="mt-4 font-medium">{s.name}</p>
-              <div className="absolute inset-x-0 bottom-0 h-px opacity-0 transition-opacity group-hover:opacity-100"
-                style={{ background: "var(--gradient-hero)" }} />
+      <Section id="skills" index="02" title="Habilidades técnicas">
+        <div className="grid gap-5 sm:grid-cols-2">
+          {skillGroups.map((g) => (
+            <div
+              key={g.title}
+              className="rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-primary/40"
+              style={{ boxShadow: "var(--shadow-soft)" }}
+            >
+              <div className="flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-accent-foreground">
+                  <g.icon className="h-5 w-5" />
+                </span>
+                <h3 className="text-lg font-semibold">{g.title}</h3>
+              </div>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {g.items.map((it) => (
+                  <span
+                    key={it}
+                    className="rounded-full border border-border bg-background px-3 py-1 text-sm text-muted-foreground"
+                  >
+                    {it}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
-      </section>
+      </Section>
 
       {/* Projects */}
-      <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
-        <SectionLabel index="03" title="Proyectos" />
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+      <Section id="projects" index="03" title="Proyectos">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
-            <article key={p.title}
-              className="group relative overflow-hidden rounded-2xl border border-border p-8 transition-all hover:border-primary/50"
-              style={{ background: "var(--gradient-card)", boxShadow: "var(--shadow-elegant)" }}>
-              <div className="flex items-start justify-between">
-                <div className="grid h-12 w-12 place-items-center rounded-xl text-primary-foreground"
-                  style={{ background: "var(--gradient-hero)" }}>
+            <article
+              key={p.title}
+              className="group flex flex-col rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-primary/40"
+              style={{ boxShadow: "var(--shadow-soft)" }}
+            >
+              <div className="flex items-center justify-between">
+                <span
+                  className="grid h-12 w-12 place-items-center rounded-xl text-primary-foreground"
+                  style={{ background: "var(--gradient-hero)" }}
+                >
                   <p.icon className="h-6 w-6" />
-                </div>
-                <span className="text-xs uppercase tracking-widest text-muted-foreground">{p.tag}</span>
+                </span>
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                  {p.tag}
+                </span>
               </div>
-              <h3 className="mt-6 text-2xl font-semibold tracking-tight">{p.title}</h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">{p.description}</p>
-              <div className="mt-6 flex flex-wrap gap-2">
+              <h3 className="mt-6 text-xl font-semibold tracking-tight">{p.title}</h3>
+              <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">{p.description}</p>
+              <div className="mt-5 flex flex-wrap gap-2">
                 {p.stack.map((t) => (
-                  <span key={t} className="rounded-full border border-border bg-background/60 px-3 py-1 text-xs text-muted-foreground">
+                  <span
+                    key={t}
+                    className="rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground"
+                  >
                     {t}
                   </span>
                 ))}
@@ -181,48 +213,92 @@ function Index() {
             </article>
           ))}
         </div>
-      </section>
+      </Section>
 
-      {/* Footer */}
-      <footer className="mx-auto max-w-6xl px-6 py-16">
-        <div className="rounded-3xl border border-border p-10 text-center"
-          style={{ background: "var(--gradient-card)" }}>
+      {/* Contact */}
+      <Section id="contact" index="04" title="Hablemos">
+        <div
+          className="rounded-3xl border border-border bg-card p-10 text-center sm:p-14"
+          style={{ boxShadow: "var(--shadow-elegant)" }}
+        >
           <h3 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             ¿Construimos algo juntos?
           </h3>
           <p className="mx-auto mt-3 max-w-md text-muted-foreground">
-            Siempre abierta a nuevas ideas, proyectos académicos y colaboraciones.
+            Abierta a prácticas, proyectos y colaboraciones. Escríbeme o revisa mis perfiles.
           </p>
-          <div className="mt-8 flex justify-center gap-3">
-            <IconLink icon={Mail} label="Email" />
-            <IconLink icon={Github} label="GitHub" />
-            <IconLink icon={Linkedin} label="LinkedIn" />
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <CTA href={`mailto:${EMAIL}`} icon={Mail} primary>
+              {EMAIL}
+            </CTA>
+            <CTA href={GITHUB} icon={Github}>GitHub</CTA>
+            <CTA href={LINKEDIN} icon={Linkedin}>LinkedIn</CTA>
+            <CTA href={CV} icon={Download}>Descargar CV</CTA>
           </div>
-          <p className="mt-10 text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Maddy Marín · Ingeniería de Software
-          </p>
         </div>
+      </Section>
+
+      <footer className="mx-auto max-w-5xl px-6 py-10 text-center text-xs text-muted-foreground">
+        © {new Date().getFullYear()} Maddy Marín · Ingeniería en Software
       </footer>
     </main>
   );
 }
 
-function SectionLabel({ index, title }: { index: string; title: string }) {
+function Section({
+  id, index, title, children,
+}: { id: string; index: string; title: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-end justify-between border-b border-border pb-4">
-      <div className="flex items-baseline gap-4">
-        <span className="text-sm font-mono text-primary">{index}</span>
+    <section id={id} className="mx-auto max-w-5xl px-6 py-20">
+      <div className="flex items-baseline gap-4 border-b border-border pb-4">
+        <span className="font-mono text-sm text-primary">{index}</span>
         <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
       </div>
+      <div className="mt-10">{children}</div>
+    </section>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <p className="text-3xl font-bold text-primary">{value}</p>
+      <p className="text-xs text-muted-foreground">{label}</p>
     </div>
   );
 }
 
-function IconLink({ icon: Icon, label }: { icon: React.ComponentType<{ className?: string }>; label: string }) {
+function SocialPill({
+  href, icon: Icon, label,
+}: { href: string; icon: React.ComponentType<{ className?: string }>; label: string }) {
   return (
-    <a href="#" aria-label={label}
-      className="grid h-11 w-11 place-items-center rounded-full border border-border bg-background/40 text-muted-foreground transition-all hover:border-primary hover:text-primary">
-      <Icon className="h-5 w-5" />
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+    >
+      <Icon className="h-4 w-4" /> {label}
+    </a>
+  );
+}
+
+function CTA({
+  href, icon: Icon, children, primary,
+}: {
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  children: React.ReactNode;
+  primary?: boolean;
+}) {
+  const base =
+    "inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all hover:-translate-y-0.5";
+  const styles = primary
+    ? "bg-primary text-primary-foreground"
+    : "border border-border bg-background text-foreground hover:bg-secondary";
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={`${base} ${styles}`}>
+      <Icon className="h-4 w-4" /> {children}
     </a>
   );
 }

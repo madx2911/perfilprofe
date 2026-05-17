@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
 });
 
 const GITHUB = "https://github.com/madx2911";
-const LINKEDIN = "https://www.linkedin.com/in/maddy-tatiana-marin-garzon-328386409";
+const LINKEDIN = "https://www.linkedin.com/in/maddymarin328386409";
 const CV = "https://drive.google.com/file/d/1uIRbQFDuQ6rkRdCw_gN080dW0_kWkZu7/view";
 const EMAIL = "Maddytatiana2911@hotmail.com";
 

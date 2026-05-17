@@ -82,8 +82,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Lovable App" },
       { name: "twitter:description", content: "Maddy Marín's Portfolio showcases her skills as a Software Engineering student." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d837a779-c8f2-4c44-8a98-685225133d81/id-preview-0fa9c975--5bc64ac6-3810-4d67-ac10-1517616b1ea8.lovable.app-1778362801616.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d837a779-c8f2-4c44-8a98-685225133d81/id-preview-0fa9c975--5bc64ac6-3810-4d67-ac10-1517616b1ea8.lovable.app-1778362801616.png" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/18f88681-02bd-4be8-8d4b-7d15083ae811/id-preview-77fda70d--5bc64ac6-3810-4d67-ac10-1517616b1ea8.lovable.app-1779047254982.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/18f88681-02bd-4be8-8d4b-7d15083ae811/id-preview-77fda70d--5bc64ac6-3810-4d67-ac10-1517616b1ea8.lovable.app-1779047254982.png" },
     ],
     links: [
       {

@@ -3,6 +3,7 @@ import {
   Code2, Database, GitBranch, Globe, Wrench, Mail, Github, Linkedin,
   Download, ArrowRight, Boxes, ListChecks, Gamepad2, Sparkles,
 } from "lucide-react";
+import portrait from "@/assets/maddy-portrait.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -86,39 +87,70 @@ function Index() {
       </nav>
 
       {/* Hero */}
-      <section id="top" className="mx-auto max-w-5xl px-6 pt-20 pb-24 sm:pt-28">
-        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs text-muted-foreground">
-          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-          Disponible para nuevas oportunidades
-        </div>
-        <h1 className="mt-6 text-5xl font-bold tracking-tight sm:text-7xl">
-          Hola, soy <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-hero)" }}>Maddy Marín</span>
-        </h1>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-          Estudiante de Ingeniería en Software. Me apasiona la lógica de programación
-          y construir soluciones limpias, simples y bien pensadas.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href={CV}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:-translate-y-0.5"
-            style={{ boxShadow: "var(--shadow-elegant)" }}
-          >
-            <Download className="h-4 w-4" /> Descargar CV
-          </a>
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium transition-colors hover:bg-secondary"
-          >
-            Ver proyectos <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-        <div className="mt-6 flex flex-wrap gap-2">
-          <SocialPill href={GITHUB} icon={Github} label="GitHub" />
-          <SocialPill href={LINKEDIN} icon={Linkedin} label="LinkedIn" />
-          <SocialPill href={`mailto:${EMAIL}`} icon={Mail} label="Email" />
+      <section id="top" className="mx-auto max-w-5xl px-6 pt-16 pb-24 sm:pt-24">
+        <div className="grid items-center gap-12 lg:grid-cols-5">
+          <div className="lg:col-span-3 order-2 lg:order-1">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs text-muted-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              Disponible para nuevas oportunidades
+            </div>
+            <h1 className="mt-6 text-5xl font-bold tracking-tight sm:text-6xl">
+              Hola, soy{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: "var(--gradient-hero)" }}
+              >
+                Maddy Marín
+              </span>
+            </h1>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              Estudiante de Ingeniería en Software. Me apasiona la lógica de programación
+              y construir soluciones limpias, simples y bien pensadas.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={CV}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:-translate-y-0.5"
+                style={{ boxShadow: "var(--shadow-elegant)" }}
+              >
+                <Download className="h-4 w-4" /> Descargar CV
+              </a>
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium transition-colors hover:bg-secondary"
+              >
+                Ver proyectos <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <SocialPill href={GITHUB} icon={Github} label="GitHub" />
+              <SocialPill href={LINKEDIN} icon={Linkedin} label="LinkedIn" />
+              <SocialPill href={`mailto:${EMAIL}`} icon={Mail} label="Email" />
+            </div>
+          </div>
+          <div className="lg:col-span-2 order-1 lg:order-2 flex justify-center">
+            <div className="relative">
+              <div
+                aria-hidden
+                className="absolute -inset-4 rounded-[2rem] opacity-30 blur-2xl"
+                style={{ background: "var(--gradient-hero)" }}
+              />
+              <div
+                className="relative overflow-hidden rounded-[2rem] border border-border bg-card"
+                style={{ boxShadow: "var(--shadow-elegant)" }}
+              >
+                <img
+                  src={portrait}
+                  alt="Retrato profesional de Maddy Marín"
+                  width={768}
+                  height={960}
+                  className="h-auto w-64 object-cover sm:w-72"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

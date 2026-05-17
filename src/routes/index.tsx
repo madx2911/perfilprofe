@@ -57,8 +57,8 @@ const projects = [
     tag: "Game Dev",
     title: "Plataformas 2D inspirado en Ecuador",
     description:
-      "Videojuego de plataformas 2D desarrollado en LÖVE y Lua, con escenarios, personajes y estética inspirada en la cultura ecuatoriana.",
-    stack: ["LÖVE", "Lua", "2D"],
+      "Videojuego de plataformas 2D con escenarios, personajes y estética inspirada en la cultura ecuatoriana, programado con lógica de Condición/Acción.",
+    stack: ["Condición/Acción", "Lógica de juego", "2D"],
   },
 ];
 
